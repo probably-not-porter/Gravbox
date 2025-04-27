@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <style>
+            * {
+                font-family: monospace;
+                image-rendering: pixelated;
+            }
+            #grid {
+                display: grid;
+                grid-template-columns: repeat(20, 1fr);
+                grid-template-rows: repeat(20, 1fr);
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 80vw;
+                height: 100vh;
+                background-color: #222;
+                overflow: scroll;
+            }
+            #controls {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                width: 19vw;
+                height: 100vh;
+                background-color: #222;
+                color: #aaa;
+                padding-left: 1vw;
+            }
+            .box {
+                border: 0.5px solid #444;
+                background-color: #333;
+                width: 100px;
+                height: 100px;
+                color: #333;
+                background-size: cover;
+            }
+            .box:hover {
+                border: 0.5px solid #777;
+            }
+            p1 {
+                width: auto;
+                height: auto;
+                background-color: white;
+            }
+            p1:hover {
+                background: red;
+                cursor: pointer;
+            }
+            button {
+                padding: 5px;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <a id="downloadAnchorElem" style="display: none"></a>
+        <div id="grid"></div>
+        <div id="controls">
+            <h2>Gravbox Builder</h2>
+            <label for="name">Level Name:</label>
+            <input
+                value="MyLevel1"
+                type="text"
+                id="name"
+                name="name"
+            /><br /><br />
+            <h3>Tools</h3>
+            <input type="radio" id="clear" name="tool" value="clear" checked />
+            <label for="clear">Erase</label><br />
+
+            <input type="radio" id="block" name="tool" value="block" />
+            <label for="block">Block</label><br />
+
+            <input type="radio" id="player" name="tool" value="player" />
+            <label for="player">Player</label><br />
+
+            <input type="radio" id="lock" name="tool" value="lock" />
+            <label for="lock">Lock Block</label><br />
+
+            <input type="radio" id="key" name="tool" value="key" />
+            <label for="key">Key Block</label><br />
+
+            <input type="radio" id="finish" name="tool" value="finish" />
+            <label for="finish">Finish Block</label><br />
+            <br />
+            <br />
+            <button onclick="window.location.reload()">Clear All</button>
+            <button onclick="downloadJson()">Save to file</button>
+        </div>
+        <script>
+            var gridParent = document.getElementById("grid");
+            for (let y = 1; y < 21; y++) {
+                for (let x = 1; x < 21; x++) {
+                    console.log(x, y);
+                    gridParent.innerHTML += `<div data-id="none" data-x="${x}" data-y="${y}" data-content="none" onclick='fillBlock(this)' class='box'></div>`;
+                }
+            }
+
+            function replaceID(e) {
+                let newID = prompt("Enter an integer ID", "0");
+                e.parentElement.setAttribute("data-id", newID);
+                e.innerHTML = `<p1 onclick='replaceID(this)' >ID: ${newID}</p1>`;
+            }
+
+            function fillBlock(e) {
+                let checkedValue = document.querySelector(
+                    'input[name="tool"]:checked',
+                ).value;
+                if (checkedValue == "clear") {
+                    e.style.backgroundImage = "none";
+                    e.innerHTML = "";
+                    e.setAttribute("data-content", "none");
+                }
+
+                if (e.getAttribute("data-content") == "none") {
+                    if (checkedValue == "player") {
+                        e.style.backgroundImage = "url('player.png')";
+                        e.innerHTML = "";
+                        e.setAttribute("data-content", "player");
+                    }
+                    if (checkedValue == "block") {
+                        e.style.backgroundImage = "url('block.png')";
+                        e.innerHTML = "";
+                        e.setAttribute("data-content", "block");
+                    }
+                    if (checkedValue == "key") {
+                        e.style.backgroundImage = "url('key.png')";
+                        e.innerHTML =
+                            "<p1 onclick='replaceID(this)' >ID: 0</p1>";
+                        e.setAttribute("data-id", "0");
+                        e.setAttribute("data-content", "key_block");
+                    }
+                    if (checkedValue == "lock") {
+                        e.style.backgroundImage = "url('lock.png')";
+                        e.innerHTML =
+                            "<p1 onclick='replaceID(this)' >ID: 0</p1>";
+                        e.setAttribute("data-id", "0");
+                        e.setAttribute("data-content", "lock_block");
+                    }
+                    if (checkedValue == "finish") {
+                        e.style.backgroundImage = "url('finish.png')";
+                        e.innerHTML =
+                            "<p1 onclick='replaceID(this)' >ID: 0</p1>";
+                        e.setAttribute("data-id", "0");
+                        e.setAttribute("data-content", "finish_block");
+                    }
+                }
+            }
+            function exportJson() {
+                var boxes = document.getElementsByClassName("box");
+                var outputJSON = {
+                    name: document.getElementById("name").value,
+                    contents: [],
+                };
+                for (var i = boxes.length - 1; i >= 0; i--) {
+                    if (boxes[i].getAttribute("data-content") != "none") {
+                        outputJSON.contents.push({
+                            type: boxes[i].getAttribute("data-content"),
+                            x: boxes[i].getAttribute("data-x"),
+                            y: boxes[i].getAttribute("data-y"),
+                            id: boxes[i].getAttribute("data-id"),
+                        });
+                    }
+                }
+                return outputJSON;
+            }
+            function downloadJson() {
+                var content = exportJson();
+                var dataStr =
+                    "data:text/json;charset=utf-8," +
+                    encodeURIComponent(JSON.stringify(content));
+
+                var dlAnchorElem =
+                    document.getElementById("downloadAnchorElem");
+
+                dlAnchorElem.setAttribute("href", dataStr);
+                dlAnchorElem.setAttribute(
+                    "download",
+                    `${document.getElementById("name").value}.json`,
+                );
+                dlAnchorElem.click();
+            }
+        </script>
+    </body>
+</html>

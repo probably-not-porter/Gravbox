@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmkr847sopftn"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_x8akl"]
+[ext_resource type="Texture2D" uid="uid://dlol21wokyfci" path="res://Assets/Sprites/arrow.png" id="3_gkkq8"]
+[ext_resource type="AudioStream" uid="uid://fc4j7ni74ck4" path="res://Assets/Audio/click.ogg" id="3_is5k3"]
+[ext_resource type="Texture2D" uid="uid://d212uilcv7n1d" path="res://Assets/Sprites/particle.png" id="3_xh2lo"]
+[ext_resource type="Texture2D" uid="uid://cepbmtb266lkj" path="res://Assets/Sprites/sheet.tres" id="4_xbca4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vpx3o"]
+size = Vector2(32, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7qtb"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+turbulence_noise_strength = 3.03
+turbulence_noise_speed_random = 0.35
+turbulence_influence_max = 0.197
+turbulence_initial_displacement_min = -0.999999
+turbulence_initial_displacement_max = 1.0
+
+[sub_resource type="Curve" id="Curve_xcs22"]
+_data = [Vector2(0, 0.11427), 0.0, 0.0, 0, 0, Vector2(0.533149, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_rb04n"]
+offsets = PackedFloat32Array(0, 0.703593)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Environment" id="Environment_e26s7"]
+background_mode = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 3.6
+tonemap_exposure = 8.18
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 2.44
+glow_bloom = 0.47
+glow_hdr_threshold = 0.98
+glow_hdr_scale = 0.75
+glow_hdr_luminance_cap = 0.27
+fog_mode = 1
+fog_light_color = Color(1, 0, 1, 1)
+fog_light_energy = 194.45
+fog_sun_scatter = 113.8
+fog_density = 1.0
+fog_height = 5.9
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_x8akl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_xbca4")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(0.49, 0.49)
+shape = SubResource("RectangleShape2D_vpx3o")
+
+[node name="MoveStopSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_is5k3")
+pitch_scale = 0.53
+
+[node name="MovementParticles" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_n7qtb")
+texture = ExtResource("3_xh2lo")
+lifetime = 0.5
+
+[node name="ArrowParticle" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+preprocess = 0.1
+texture = ExtResource("3_gkkq8")
+gravity = Vector2(0, 0)
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_xcs22")
+color_ramp = SubResource("Gradient_rb04n")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e26s7")

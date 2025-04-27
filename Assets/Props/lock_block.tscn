@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cruf8suospbj5"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/lock_block.gd" id="1_w6yoc"]
+[ext_resource type="Texture2D" uid="uid://cepbmtb266lkj" path="res://Assets/Sprites/sheet.tres" id="1_xbvdq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jnwl"]
+size = Vector2(16, 16)
+
+[node name="LockBlock" type="StaticBody2D"]
+script = ExtResource("1_w6yoc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xbvdq")
+region_enabled = true
+region_rect = Rect2(48, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_6jnwl")
