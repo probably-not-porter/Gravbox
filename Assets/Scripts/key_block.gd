@@ -19,6 +19,7 @@ func _on_body_entered(body):
 func unlock_locks():
 	for lock in get_tree().get_nodes_in_group("locks"):
 		if lock.id == id:
+			await lock.unlock();
 			lock.queue_free()
 
 func get_lock_with_id(id: int) -> Node2D:

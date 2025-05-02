@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			collider.unlock_locks()
 		if collider and collider.is_in_group("blocks"):
 			collider.tap();
-		if collision.get_normal().dot(grav.normalized()) < -0.9:
+		if collision.get_normal().dot(grav.normalized()) < -0.9999:
 			stop_move()
 
 func emit_arrow(a):
@@ -63,7 +63,7 @@ func stop_move():
 	velocity = Vector2.ZERO
 	grav = Vector2.ZERO
 	is_moving = false
-	position = get_snapped_position()
+	position = get_snapped_position() # TODO returning correct position but something is fucking it up
 	# Play sound
 	$MoveStopSound.play()
 

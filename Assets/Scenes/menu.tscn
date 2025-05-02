@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://crcgus66k7rvm"]
+[gd_scene load_steps=9 format=3 uid="uid://crcgus66k7rvm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/menu.gd" id="1_k3k8b"]
 [ext_resource type="Texture2D" uid="uid://bhv07ldjngcft" path="res://Assets/Sprites/logo.png" id="1_ll3np"]
 [ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/player2.png" id="2_38wwu"]
 [ext_resource type="StyleBox" uid="uid://b5wdpkw6gydqa" path="res://Assets/Styles/button_click.tres" id="2_vk4bu"]
+[ext_resource type="PackedScene" uid="uid://caf6s6ige1d3l" path="res://Assets/Props/Button.tscn" id="3_f5ny0"]
 [ext_resource type="StyleBox" uid="uid://bwbet8yaxf7h7" path="res://Assets/Styles/button_normal.tres" id="3_seceq"]
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="4_fqjkd"]
 
 [sub_resource type="Environment" id="Environment_1tn1d"]
 background_mode = 3
@@ -33,7 +35,7 @@ script = ExtResource("1_k3k8b")
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(573.45, 111.585)
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("1_ll3np")
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
@@ -44,28 +46,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -103.177
-offset_top = -164.34
+offset_top = -74.135
 offset_right = 96.823
-offset_bottom = 164.34
+offset_bottom = 133.735
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="ButtonContainer"]
+[node name="PlayButton" parent="ButtonContainer" instance=ExtResource("3_f5ny0")]
 layout_mode = 2
-theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
-theme_override_styles/disabled = ExtResource("3_seceq")
-theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
-theme_override_styles/hover_pressed = ExtResource("2_vk4bu")
-theme_override_styles/hover_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/hover = ExtResource("2_vk4bu")
-theme_override_styles/pressed_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/pressed = ExtResource("2_vk4bu")
-theme_override_styles/normal_mirrored = ExtResource("3_seceq")
-theme_override_styles/normal = ExtResource("3_seceq")
-text = "Start"
+theme_override_fonts/font = ExtResource("4_fqjkd")
+theme_override_font_sizes/font_size = 32
 
 [node name="LevelsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fqjkd")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
 theme_override_styles/disabled = ExtResource("3_seceq")
 theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
@@ -80,6 +75,8 @@ text = "Levels"
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fqjkd")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
 theme_override_styles/disabled = ExtResource("3_seceq")
 theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
@@ -91,20 +88,6 @@ theme_override_styles/pressed = ExtResource("2_vk4bu")
 theme_override_styles/normal_mirrored = ExtResource("3_seceq")
 theme_override_styles/normal = ExtResource("3_seceq")
 text = "Quit"
-
-[node name="LoaderButton" type="Button" parent="ButtonContainer"]
-layout_mode = 2
-theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
-theme_override_styles/disabled = ExtResource("3_seceq")
-theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
-theme_override_styles/hover_pressed = ExtResource("2_vk4bu")
-theme_override_styles/hover_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/hover = ExtResource("2_vk4bu")
-theme_override_styles/pressed_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/pressed = ExtResource("2_vk4bu")
-theme_override_styles/normal_mirrored = ExtResource("3_seceq")
-theme_override_styles/normal = ExtResource("3_seceq")
-text = "Loader (TESTING)"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1tn1d")
@@ -120,7 +103,5 @@ gravity = Vector2(0, 56.94)
 scale_amount_min = 0.0
 color = Color(1, 1, 1, 0.164706)
 
-[connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="ButtonContainer/LoaderButton" to="." method="_on_loader_button_pressed"]

@@ -24,4 +24,4 @@ func next_level():
 	else:
 		await get_tree().create_timer(2).timeout
 		get_tree().change_scene_to_file("res://Assets/Scenes/levels/level%s.tscn" % nextLevel);
-	print("Next")
+	print("Next Level TODO")
