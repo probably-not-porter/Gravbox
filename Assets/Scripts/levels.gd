@@ -28,3 +28,6 @@ func make_level_button(level):
 func load_level(level):
 	Globals.currentLevel = level;
 	get_tree().change_scene_to_file("res://Assets/Scenes/loader.tscn");
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn");

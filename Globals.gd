@@ -1,5 +1,6 @@
 extends Node2D
 var currentLevel;
+var gameRunning = false;
 
 static func get_all_files(path: String, file_ext := "", files : Array[String] = []) -> Array[String]:
 	var dir : = DirAccess.open(path)
@@ -26,3 +27,12 @@ static func get_all_files(path: String, file_ext := "", files : Array[String] = 
 	else:
 		print("[get_all_files()] An error occurred when trying to access %s." % path)
 	return files
+
+func _on_play_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Assets/Scenes/levels/level1.tscn");
+
+func _on_levels_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://Assets/Scenes/levels.tscn");
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit();

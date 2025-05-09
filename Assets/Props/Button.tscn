@@ -13,7 +13,7 @@ Button/styles/disabled_mirrored = SubResource("StyleBoxTexture_tbien")
 [node name="PlayButton" type="Button"]
 theme = SubResource("Theme_xtj7h")
 theme_override_fonts/font = ExtResource("1_sdv34")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 theme_override_styles/disabled_mirrored = ExtResource("1_qvd04")
 theme_override_styles/disabled = ExtResource("1_qvd04")
 theme_override_styles/hover_pressed_mirrored = ExtResource("1_qvd04")

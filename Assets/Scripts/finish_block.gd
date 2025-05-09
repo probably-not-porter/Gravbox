@@ -16,7 +16,9 @@ func tap():
 			frame = frame + 1;
 			$Animation.frame = frame;
 			await get_tree().create_timer(0.05).timeout
+			
 
+	
 func next_level():
 	if nextLevel == null:
 		await get_tree().create_timer(2).timeout

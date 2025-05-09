@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bngdboa0fjmfy"]
+[gd_scene load_steps=6 format=3 uid="uid://bngdboa0fjmfy"]
 
 [ext_resource type="Texture2D" uid="uid://cepbmtb266lkj" path="res://Assets/Sprites/sheet.tres" id="1_8bmnq"]
 [ext_resource type="Script" path="res://Assets/Scripts/finish_block.gd" id="1_j8obr"]
 [ext_resource type="Texture2D" uid="uid://24hmfew35r61" path="res://Assets/Sprites/sheet.png" id="3_wcx6j"]
+[ext_resource type="Script" path="res://Assets/Scripts/end_animation.gd" id="4_01f58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gta7v"]
 size = Vector2(16, 16)
@@ -24,3 +25,6 @@ texture = ExtResource("3_wcx6j")
 hframes = 8
 vframes = 8
 frame = 15
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("4_01f58")

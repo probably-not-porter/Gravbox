@@ -54,8 +54,6 @@ grow_vertical = 2
 
 [node name="PlayButton" parent="ButtonContainer" instance=ExtResource("3_f5ny0")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_fqjkd")
-theme_override_font_sizes/font_size = 32
 
 [node name="LevelsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
