@@ -6,7 +6,6 @@ var tapped = false;
 
 func _ready():
 	add_to_group("blocks")
-	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func tap():
 	if tapped == false:
@@ -21,9 +20,7 @@ func tap():
 	
 func next_level():
 	if nextLevel == null:
-		await get_tree().create_timer(2).timeout
-		get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn");
+		await get_tree().create_timer(0.8).timeout
+		get_tree().current_scene.load_main_menu();
 	else:
-		await get_tree().create_timer(2).timeout
-		get_tree().change_scene_to_file("res://Assets/Scenes/levels/level%s.tscn" % nextLevel);
-	print("Next Level TODO")
+		get_tree().current_scene.load_main_menu();

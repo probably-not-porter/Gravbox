@@ -9,4 +9,4 @@ func _process(delta):
 	var alpha := 0.75 + 0.25 * sin(fade_timer * TAU / fade_speed)
 	
 	# Apply alpha to modulate color
-	self.modulate.a = alpha
+	self.modulate.a = alpha	

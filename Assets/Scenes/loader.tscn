@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dghun40lhhkf3"]
+[gd_scene load_steps=7 format=3 uid="uid://dghun40lhhkf3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/loader.gd" id="1_8eq0s"]
 [ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="2_lavo4"]
@@ -6,27 +6,48 @@
 [ext_resource type="AudioStream" uid="uid://fc4j7ni74ck4" path="res://Assets/Audio/click.ogg" id="3_rnj5w"]
 [ext_resource type="Script" path="res://Assets/Scripts/fade.gd" id="5_nvcgt"]
 
+[sub_resource type="Environment" id="Environment_2uydi"]
+background_mode = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 3.6
+tonemap_exposure = 8.18
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 2.44
+glow_bloom = 0.47
+glow_hdr_threshold = 0.98
+glow_hdr_scale = 0.75
+glow_hdr_luminance_cap = 0.27
+fog_mode = 1
+fog_light_color = Color(1, 0, 1, 1)
+fog_light_energy = 194.45
+fog_sun_scatter = 113.8
+fog_density = 1.0
+fog_height = 5.9
+
 [node name="Loader" type="Node2D"]
 script = ExtResource("1_8eq0s")
 
-[node name="Fade" type="ColorRect" parent="."]
+[node name="PreGameUI" type="Node" parent="."]
+
+[node name="Fade" type="ColorRect" parent="PreGameUI"]
 z_index = 10
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -500.0
-offset_right = 9400.0
-offset_bottom = 9500.0
+offset_left = -1176.0
+offset_top = -824.0
+offset_right = 8824.0
+offset_bottom = 9176.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("5_nvcgt")
 speed = 4.0
 
-[node name="ScreenText" type="Label" parent="."]
+[node name="ScreenText" type="Label" parent="PreGameUI"]
 offset_left = 100.0
 offset_top = 100.0
 offset_right = 1052.0
@@ -36,17 +57,16 @@ theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="SkipText" type="Label" parent="."]
-visible = false
+[node name="SkipText" type="Label" parent="PreGameUI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 915.0
-offset_top = 558.0
-offset_right = 1215.0
-offset_bottom = 658.0
+offset_left = -237.0
+offset_top = -90.0
+offset_right = 63.0
+offset_bottom = 10.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.380392)
@@ -57,7 +77,12 @@ vertical_alignment = 1
 autowrap_mode = 2
 script = ExtResource("3_6p6bu")
 
-[node name="LetterSound" type="AudioStreamPlayer2D" parent="."]
+[node name="LetterSound" type="AudioStreamPlayer2D" parent="PreGameUI"]
 stream = ExtResource("3_rnj5w")
-volume_db = -8.758
-pitch_scale = 0.82
+volume_db = -14.232
+pitch_scale = 1.08
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2uydi")
+
+[node name="Level" type="Node" parent="."]

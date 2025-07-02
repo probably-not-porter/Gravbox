@@ -10,22 +10,21 @@ func _ready():
 	lock = get_lock_with_id(id)
 	if lock:
 		update_line()
-	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
 	if body.name == "Player":
 		unlock_locks()
 
 func unlock_locks():
-	for lock in get_tree().get_nodes_in_group("locks"):
-		if lock.id == id:
-			await lock.unlock();
-			lock.queue_free()
+	for lock_n in get_tree().get_nodes_in_group("locks"):
+		if lock_n.id == id:
+			await lock_n.unlock();
+			lock_n.queue_free()
 
-func get_lock_with_id(id: int) -> Node2D:
-	for lock in get_tree().get_nodes_in_group("locks"):
-		if lock.id == id:
-			return lock
+func get_lock_with_id(lock_id: int) -> Node2D:
+	for lock_n in get_tree().get_nodes_in_group("locks"):
+		if lock_n.id == lock_id:
+			return lock_n
 	return null
 
 func update_line():

@@ -6,7 +6,6 @@ var tapped = false;
 
 func _ready():
 	add_to_group("blocks")
-	connect("body_entered", Callable(self, "_on_body_entered"))
 	if startTapped:
 		tap();
 

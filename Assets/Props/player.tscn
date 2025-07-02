@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmkr847sopftn"]
+[gd_scene load_steps=12 format=3 uid="uid://bmkr847sopftn"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player.gd" id="1_x8akl"]
 [ext_resource type="Texture2D" uid="uid://dlol21wokyfci" path="res://Assets/Sprites/arrow.png" id="3_gkkq8"]
 [ext_resource type="AudioStream" uid="uid://fc4j7ni74ck4" path="res://Assets/Audio/click.ogg" id="3_is5k3"]
 [ext_resource type="Texture2D" uid="uid://d212uilcv7n1d" path="res://Assets/Sprites/particle.png" id="3_xh2lo"]
 [ext_resource type="Texture2D" uid="uid://cepbmtb266lkj" path="res://Assets/Sprites/sheet.tres" id="4_xbca4"]
+[ext_resource type="Script" path="res://Assets/Scripts/in_game_ui.gd" id="6_iv1ow"]
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="6_qnxbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpx3o"]
 size = Vector2(32, 32)
@@ -25,25 +27,6 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_rb04n"]
 offsets = PackedFloat32Array(0, 0.703593)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="Environment" id="Environment_e26s7"]
-background_mode = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 3.6
-tonemap_exposure = 8.18
-sdfgi_enabled = true
-glow_enabled = true
-glow_intensity = 2.44
-glow_bloom = 0.47
-glow_hdr_threshold = 0.98
-glow_hdr_scale = 0.75
-glow_hdr_luminance_cap = 0.27
-fog_mode = 1
-fog_light_color = Color(1, 0, 1, 1)
-fog_light_energy = 194.45
-fog_sun_scatter = 113.8
-fog_density = 1.0
-fog_height = 5.9
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_x8akl")
@@ -86,5 +69,33 @@ scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_xcs22")
 color_ramp = SubResource("Gradient_rb04n")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_e26s7")
+[node name="InGameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_iv1ow")
+
+[node name="QuitLabel" type="Label" parent="InGameUI"]
+layout_mode = 0
+offset_left = -184.19
+offset_top = -103.295
+offset_right = 19.81
+offset_bottom = -71.295
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_qnxbf")
+text = "Hold ESC to quit"
+
+[node name="RestartLabel" type="Label" parent="InGameUI"]
+layout_mode = 0
+offset_left = -184.19
+offset_top = -94.025
+offset_right = 19.81
+offset_bottom = -62.025
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_qnxbf")
+text = "Hold SPACE to restart"

@@ -3,6 +3,7 @@ extends CharacterBody2D
 var grav = Vector2.ZERO
 var grid_size = 8
 var is_moving = false
+var trigger_restart = false
 
 func _physics_process(delta: float) -> void:
 	if Globals.gameRunning:
@@ -39,10 +40,6 @@ func _physics_process(delta: float) -> void:
 			if grav.x != 0:
 				position.y = round(position.y / grid_size) * grid_size
 
-
-
-		
-			
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
@@ -59,14 +56,16 @@ func emit_arrow(a):
 	$ArrowParticle.restart()
 
 func check_for_loss():
-	if abs(position.x) > 3000 or abs(position.y) > 3000:
-		get_tree().reload_current_scene() # TODO
+	if Globals.gameRunning == true:
+		if abs(position.x) > 3000 or abs(position.y) > 3000:
+			if trigger_restart == false:
+				trigger_restart = true;
+				get_tree().current_scene.reload_level();
 
 func start_move(direction: Vector2):
 	position = get_snapped_position()
 	grav = direction * 980
 	is_moving = true
-
 
 func stop_move():
 	velocity = Vector2.ZERO

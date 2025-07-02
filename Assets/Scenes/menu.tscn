@@ -1,12 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://crcgus66k7rvm"]
+[gd_scene load_steps=7 format=3 uid="uid://crcgus66k7rvm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/menu.gd" id="1_k3k8b"]
 [ext_resource type="Texture2D" uid="uid://bhv07ldjngcft" path="res://Assets/Sprites/logo.png" id="1_ll3np"]
 [ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/player2.png" id="2_38wwu"]
-[ext_resource type="StyleBox" uid="uid://b5wdpkw6gydqa" path="res://Assets/Styles/button_click.tres" id="2_vk4bu"]
 [ext_resource type="PackedScene" uid="uid://caf6s6ige1d3l" path="res://Assets/Props/Button.tscn" id="3_f5ny0"]
-[ext_resource type="StyleBox" uid="uid://bwbet8yaxf7h7" path="res://Assets/Styles/button_normal.tres" id="3_seceq"]
-[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="4_fqjkd"]
+
+[sub_resource type="Theme" id="Theme_vxtbo"]
 
 [sub_resource type="Environment" id="Environment_1tn1d"]
 background_mode = 3
@@ -54,37 +53,15 @@ grow_vertical = 2
 
 [node name="PlayButton" parent="ButtonContainer" instance=ExtResource("3_f5ny0")]
 layout_mode = 2
+theme = null
 
 [node name="LevelsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_fqjkd")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
-theme_override_styles/disabled = ExtResource("3_seceq")
-theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
-theme_override_styles/hover_pressed = ExtResource("2_vk4bu")
-theme_override_styles/hover_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/hover = ExtResource("2_vk4bu")
-theme_override_styles/pressed_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/pressed = ExtResource("2_vk4bu")
-theme_override_styles/normal_mirrored = ExtResource("3_seceq")
-theme_override_styles/normal = ExtResource("3_seceq")
 text = "Levels"
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_fqjkd")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/disabled_mirrored = ExtResource("3_seceq")
-theme_override_styles/disabled = ExtResource("3_seceq")
-theme_override_styles/hover_pressed_mirrored = ExtResource("3_seceq")
-theme_override_styles/hover_pressed = ExtResource("2_vk4bu")
-theme_override_styles/hover_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/hover = ExtResource("2_vk4bu")
-theme_override_styles/pressed_mirrored = ExtResource("2_vk4bu")
-theme_override_styles/pressed = ExtResource("2_vk4bu")
-theme_override_styles/normal_mirrored = ExtResource("3_seceq")
-theme_override_styles/normal = ExtResource("3_seceq")
+theme = SubResource("Theme_vxtbo")
 text = "Quit"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

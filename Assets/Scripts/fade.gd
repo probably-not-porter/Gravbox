@@ -1,7 +1,7 @@
 extends ColorRect
 
 
-@export var speed = 1.2
+@export var speed = 0.001
 
 func fade_in():
 	while self.color.a < 1:
