@@ -7,8 +7,8 @@ extends Control
 var _can_process_input: bool = false
 var _time_elapsed: float = 0.0
 
-var _quit_current_count: float = 99.0
-var _restart_current_count: float = 99.0
+var _quit_current_count: float = 0.0
+var _restart_current_count: float = 0.0
 
 func _ready() -> void:
 	# Ensure labels exist before trying to access them
@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 			_can_process_input = true
 		return # Exit early if not yet active
 	else:
+		_can_process_input = false
 		# Handle ESC-to-quit
 		_quit_current_count = _update_input_and_label(
 			"quit",
@@ -50,10 +51,10 @@ func _update_input_and_label(action_name: String, label_node: Label, current_cou
 			new_count = wait_max # Cap the count
 			on_max_action.call()
 	else:
-		if new_count > 10:
+		if new_count > 0:
 			new_count -= fade_speed
-		elif new_count < 10: # Prevent going below the minimum
-			new_count = 10
+		elif new_count < 0: # Prevent going below the minimum
+			new_count = 0
 
 	# Update label alpha
 	if label_node:

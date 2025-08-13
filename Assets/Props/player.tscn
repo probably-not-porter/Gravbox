@@ -100,6 +100,7 @@ grow_vertical = 2
 script = ExtResource("6_iv1ow")
 
 [node name="QuitLabel" type="Label" parent="InGameUI"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -184.19
 offset_top = -103.295
@@ -111,6 +112,7 @@ theme_override_fonts/font = ExtResource("6_qnxbf")
 text = "Hold ESC to quit"
 
 [node name="RestartLabel" type="Label" parent="InGameUI"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -184.19
 offset_top = -94.025

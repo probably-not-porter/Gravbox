@@ -75,6 +75,7 @@ func _load_level_text() -> void:
 
 ## Loads and instantiates the objects for the current level.
 func _load_level() -> void:
+	print("load level")
 	_hide_load_screen()
 	var level_data = _get_level_data()
 	if not level_data:
@@ -94,22 +95,21 @@ func _load_level() -> void:
 
 ## Reloads the current level.
 func reload_level() -> void:
-	# Globals.gameRunning = false
 	await fade_animation.fade_in()
-	_clear_level()
-	_load_level()
+	await _clear_level()
+	await _load_level()
 	await fade_animation.fade_out()
-	# Globals.gameRunning = true
 
 ## Removes all child nodes from the level container.
 func _clear_level() -> void:
+	print("clear level")
 	for child in level_container.get_children():
 		child.queue_free()
 
 ## Transitions to the main menu scene.
 func load_main_menu() -> void:
-	await fade_animation.fade_in()
-	get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn")
+	#await fade_animation.fade_in()
+	get_tree().change_scene_to_file("res://Assets/Scenes/menu.tscn");
 
 ## Retrieves level data from the JSON file.
 func _get_level_data() -> Dictionary:
