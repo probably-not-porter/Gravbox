@@ -3,7 +3,6 @@ extends Control
 var button = preload("res://Assets/Props/Button.tscn");
 
 func _ready():
-	var user_levels : String = OS.get_executable_path().get_base_dir() + "/levels/";
 	var main_levels : String = "res://Assets/Levels/";
 	#get_levels(user_levels);
 	get_levels(main_levels);

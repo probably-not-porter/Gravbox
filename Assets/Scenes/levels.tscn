@@ -36,6 +36,7 @@ theme = ExtResource("2_pu3sr")
 text = "Play Level"
 
 [node name="PrevButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 386.0
 offset_top = 558.0
 offset_right = 450.0
@@ -44,6 +45,7 @@ theme = ExtResource("2_pu3sr")
 text = "<<<"
 
 [node name="NextButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 701.25
 offset_top = 558.0
 offset_right = 765.25

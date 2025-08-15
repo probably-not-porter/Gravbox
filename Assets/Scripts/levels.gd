@@ -6,9 +6,8 @@ var level_index = 0;
 
 func _ready():
 	var user_levels : String = OS.get_executable_path().get_base_dir() + "/levels/";
-	var main_levels : String = "res://Assets/Levels/";
 	$PrevButton.disabled = true;
-	get_levels(main_levels);
+	get_levels(user_levels);
 	
 func get_levels(lv_path):
 	var tmp_level_scenes := Globals.get_all_files(lv_path, ".json")
