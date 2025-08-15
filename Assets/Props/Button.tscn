@@ -1,16 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://caf6s6ige1d3l"]
+[gd_scene load_steps=2 format=3 uid="uid://caf6s6ige1d3l"]
 
-[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="1_sdv34"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbien"]
-
-[sub_resource type="Theme" id="Theme_xtj7h"]
-/colors/test = Color(0.741145, 0.408662, 0.382796, 1)
-Button/styles/disabled_mirrored = SubResource("StyleBoxTexture_tbien")
+[ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="1_m3qe6"]
 
 [node name="TemplateButton" type="Button"]
 offset_right = 200.0
 offset_bottom = 31.0
-theme = SubResource("Theme_xtj7h")
-theme_override_fonts/font = ExtResource("1_sdv34")
+theme = ExtResource("1_m3qe6")
 text = "Start"

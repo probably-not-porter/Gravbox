@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dghun40lhhkf3"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/loader.gd" id="1_8eq0s"]
-[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="2_lavo4"]
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="2_lavo4"]
 [ext_resource type="Script" path="res://Assets/Scripts/pulse.gd" id="3_6p6bu"]
 [ext_resource type="AudioStream" uid="uid://fc4j7ni74ck4" path="res://Assets/Audio/click.ogg" id="3_rnj5w"]
 [ext_resource type="Script" path="res://Assets/Scripts/fade.gd" id="5_nvcgt"]

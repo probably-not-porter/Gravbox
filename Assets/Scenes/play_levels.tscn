@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://8o1f1pbn5lqm"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/play_levels.gd" id="1_mlkyw"]
+[ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="2_t38oi"]
+
+[sub_resource type="Curve" id="Curve_rg8gh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506122, 1), 0.0, 0.0, 0, 0, Vector2(0.987755, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlkyw")
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 580.0
+offset_right = 93.0
+offset_bottom = 628.0
+theme = ExtResource("2_t38oi")
+text = "Back"
+
+[node name="LevelButtons" type="GridContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 0
+offset_left = 178.19
+offset_top = 72.0
+offset_right = 407.09
+offset_bottom = 122.0
+theme_override_constants/h_separation = 54
+theme_override_constants/v_separation = 28
+columns = 5
+
+[node name="AmbientParticles" type="CPUParticles2D" parent="."]
+amount = 300
+lifetime = 2.0
+preprocess = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1000)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = 300.0
+angular_velocity_max = 600.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_rg8gh")
+color = Color(1, 1, 1, 0.721569)
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

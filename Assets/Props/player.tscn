@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d212uilcv7n1d" path="res://Assets/Sprites/particle.png" id="3_xh2lo"]
 [ext_resource type="Texture2D" uid="uid://cepbmtb266lkj" path="res://Assets/Sprites/sheet.tres" id="4_xbca4"]
 [ext_resource type="Script" path="res://Assets/Scripts/in_game_ui.gd" id="6_iv1ow"]
-[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Fonts/Alkhemikal.ttf" id="6_qnxbf"]
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="6_qnxbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpx3o"]
 size = Vector2(32, 32)
@@ -73,7 +73,7 @@ scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_xcs22")
 color_ramp = SubResource("Gradient_rb04n")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="AmbientParticles" type="CPUParticles2D" parent="."]
 amount = 300
 lifetime = 2.0
 preprocess = 5.0

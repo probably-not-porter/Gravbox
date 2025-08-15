@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 # This function now takes 'current_count' as a parameter and returns the NEW count.
 func _update_input_and_label(action_name: String, label_node: Label, current_count: float, on_max_action: Callable) -> float:
 	var new_count = current_count # Work with a local copy
-
 	if Input.is_action_pressed(action_name):
 		new_count += fade_speed
 		if new_count >= wait_max:

@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/menu.gd" id="1_k3k8b"]
 [ext_resource type="Texture2D" uid="uid://bhv07ldjngcft" path="res://Assets/Sprites/logo.png" id="1_ll3np"]
 [ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/player2.png" id="2_38wwu"]
-[ext_resource type="PackedScene" uid="uid://caf6s6ige1d3l" path="res://Assets/Props/Button.tscn" id="3_f5ny0"]
-
-[sub_resource type="Theme" id="Theme_vxtbo"]
+[ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="3_keoxj"]
 
 [sub_resource type="Environment" id="Environment_1tn1d"]
 background_mode = 3
@@ -22,6 +20,10 @@ fog_light_energy = 11.3
 fog_sun_scatter = 11.95
 fog_density = 1.127
 fog_height = 5.9
+
+[sub_resource type="Curve" id="Curve_wmnvj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506122, 1), 0.0, 0.0, 0, 0, Vector2(0.987755, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -51,17 +53,19 @@ offset_bottom = 133.735
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" parent="ButtonContainer" instance=ExtResource("3_f5ny0")]
+[node name="PlayButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme = null
+theme = ExtResource("3_keoxj")
+text = "Play"
 
 [node name="LevelsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-text = "Levels"
+theme = ExtResource("3_keoxj")
+text = "Custom Levels"
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
-theme = SubResource("Theme_vxtbo")
+theme = ExtResource("3_keoxj")
 text = "Quit"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -71,6 +75,7 @@ environment = SubResource("Environment_1tn1d")
 position = Vector2(576, -1000)
 amount = 12
 lifetime = 19.42
+preprocess = 10.0
 texture = ExtResource("2_38wwu")
 emission_shape = 3
 emission_rect_extents = Vector2(600, 19.145)
@@ -78,5 +83,23 @@ gravity = Vector2(0, 56.94)
 scale_amount_min = 0.0
 color = Color(1, 1, 1, 0.164706)
 
+[node name="AmbientParticles" type="CPUParticles2D" parent="."]
+amount = 300
+lifetime = 2.0
+preprocess = 5.0
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 1000)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = 300.0
+angular_velocity_max = 600.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_wmnvj")
+color = Color(1, 1, 1, 0.721569)
+
+[connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]

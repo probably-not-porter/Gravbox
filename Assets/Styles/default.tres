@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://uhcihmeaiuvb"]
+
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="1_kxhlq"]
+[ext_resource type="StyleBox" uid="uid://b5wdpkw6gydqa" path="res://Assets/Styles/button_click.tres" id="2_7juir"]
+[ext_resource type="StyleBox" uid="uid://bwbet8yaxf7h7" path="res://Assets/Styles/button_normal.tres" id="3_7mugh"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 0.494118)
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 0.160784)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.152941)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 1
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_kxhlq")
+Button/styles/disabled = ExtResource("2_7juir")
+Button/styles/focus = ExtResource("2_7juir")
+Button/styles/hover = ExtResource("2_7juir")
+Button/styles/normal = ExtResource("3_7mugh")
+Button/styles/pressed = ExtResource("2_7juir")
