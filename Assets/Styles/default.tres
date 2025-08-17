@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://uhcihmeaiuvb"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://uhcihmeaiuvb"]
 
 [ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="1_kxhlq"]
 [ext_resource type="StyleBox" uid="uid://b5wdpkw6gydqa" path="res://Assets/Styles/button_click.tres" id="2_7juir"]
+[ext_resource type="StyleBox" uid="uid://ddiworgky55sd" path="res://Assets/Styles/button_disabled.tres" id="2_tdpcm"]
 [ext_resource type="StyleBox" uid="uid://bwbet8yaxf7h7" path="res://Assets/Styles/button_normal.tres" id="3_7mugh"]
 
 [resource]
@@ -20,11 +21,11 @@ Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 0
-Button/constants/icon_max_width = 1
-Button/constants/outline_size = 0
+Button/constants/icon_max_width = 32
+Button/constants/outline_size = 8
 Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_kxhlq")
-Button/styles/disabled = ExtResource("2_7juir")
+Button/styles/disabled = ExtResource("2_tdpcm")
 Button/styles/focus = ExtResource("2_7juir")
 Button/styles/hover = ExtResource("2_7juir")
 Button/styles/normal = ExtResource("3_7mugh")

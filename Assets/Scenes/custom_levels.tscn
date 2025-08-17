@@ -1,0 +1,154 @@
+[gd_scene load_steps=14 format=3 uid="uid://dflv6eq3nvv4o"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/levels.gd" id="1_1mgcm"]
+[ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="2_pu3sr"]
+[ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/icon.png" id="3_3f4n8"]
+[ext_resource type="Texture2D" uid="uid://bsbmfrrhkoli" path="res://Assets/Sprites/button_icons.png" id="3_bhp4y"]
+[ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="3_er7xr"]
+[ext_resource type="PackedScene" uid="uid://bm67gmxx54ee4" path="res://Assets/Styles/world_environment.tscn" id="5_2de3g"]
+[ext_resource type="Script" path="res://Assets/Scripts/preview.gd" id="7_q1grg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itaao"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op71l"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jo0oj"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esv2x"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0043e"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oupkm"]
+atlas = ExtResource("3_bhp4y")
+region = Rect2(80, 0, 16, 16)
+
+[node name="CustomLevels" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1mgcm")
+
+[node name="MenuParticles" type="CPUParticles2D" parent="."]
+position = Vector2(576, -1000)
+amount = 12
+lifetime = 19.42
+preprocess = 10.0
+texture = ExtResource("3_3f4n8")
+emission_shape = 3
+emission_rect_extents = Vector2(600, 19.145)
+gravity = Vector2(0, 56.94)
+scale_amount_min = 0.0
+color = Color(1, 1, 1, 0.164706)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("5_2de3g")]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Buttons" type="Node" parent="UI"]
+
+[node name="NextButton" type="Button" parent="UI/Buttons"]
+offset_left = 701.25
+offset_top = 558.0
+offset_right = 765.25
+offset_bottom = 606.0
+theme = ExtResource("2_pu3sr")
+icon = SubResource("AtlasTexture_itaao")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PrevButton" type="Button" parent="UI/Buttons"]
+offset_left = 386.0
+offset_top = 558.0
+offset_right = 450.0
+offset_bottom = 606.0
+theme = ExtResource("2_pu3sr")
+icon = SubResource("AtlasTexture_op71l")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PlayButton" type="Button" parent="UI/Buttons"]
+offset_left = 461.0
+offset_top = 558.0
+offset_right = 688.0
+offset_bottom = 606.0
+theme = ExtResource("2_pu3sr")
+icon = SubResource("AtlasTexture_jo0oj")
+icon_alignment = 1
+expand_icon = true
+
+[node name="DirButton" type="Button" parent="UI/Buttons"]
+offset_left = 859.0
+offset_top = 558.0
+offset_right = 1108.0
+offset_bottom = 606.0
+theme = ExtResource("2_pu3sr")
+text = "Level Dir"
+icon = SubResource("AtlasTexture_esv2x")
+expand_icon = true
+
+[node name="EditorButton" type="Button" parent="UI/Buttons"]
+offset_left = 859.0
+offset_top = 487.0
+offset_right = 1108.0
+offset_bottom = 535.0
+theme = ExtResource("2_pu3sr")
+text = "Level Editor"
+icon = SubResource("AtlasTexture_0043e")
+expand_icon = true
+
+[node name="MenuButton" type="Button" parent="UI/Buttons"]
+offset_left = 49.0
+offset_top = 558.0
+offset_right = 222.0
+offset_bottom = 606.0
+theme = ExtResource("2_pu3sr")
+text = "Back"
+icon = SubResource("AtlasTexture_oupkm")
+expand_icon = true
+
+[node name="Text" type="Node" parent="UI"]
+
+[node name="LevelInfoText" type="RichTextLabel" parent="UI/Text"]
+offset_top = 61.0
+offset_right = 1152.0
+offset_bottom = 258.0
+theme_override_colors/default_color = Color(0.821789, 0.821789, 0.821789, 1)
+theme_override_fonts/normal_font = ExtResource("3_er7xr")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]No custom levels found
+Why not make one?[/center]"
+
+[node name="LevelNumText" type="RichTextLabel" parent="UI/Text"]
+offset_top = 518.0
+offset_right = 1152.0
+offset_bottom = 550.0
+theme_override_fonts/normal_font = ExtResource("3_er7xr")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]0/0[/center]"
+
+[node name="Preview" type="Node2D" parent="UI"]
+position = Vector2(576, 298.49)
+scale = Vector2(12.7, 12.7)
+script = ExtResource("7_q1grg")
+
+[connection signal="pressed" from="UI/Buttons/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/DirButton" to="." method="_on_dir_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/EditorButton" to="." method="_on_editor_button_pressed"]
+[connection signal="pressed" from="UI/Buttons/MenuButton" to="." method="_on_menu_button_pressed"]

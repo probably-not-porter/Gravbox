@@ -5,25 +5,7 @@
 [ext_resource type="Script" path="res://Assets/Scripts/pulse.gd" id="3_6p6bu"]
 [ext_resource type="AudioStream" uid="uid://fc4j7ni74ck4" path="res://Assets/Audio/click.ogg" id="3_rnj5w"]
 [ext_resource type="Script" path="res://Assets/Scripts/fade.gd" id="5_nvcgt"]
-
-[sub_resource type="Environment" id="Environment_2uydi"]
-background_mode = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 3.6
-tonemap_exposure = 8.18
-sdfgi_enabled = true
-glow_enabled = true
-glow_intensity = 2.44
-glow_bloom = 0.47
-glow_hdr_threshold = 0.98
-glow_hdr_scale = 0.75
-glow_hdr_luminance_cap = 0.27
-fog_mode = 1
-fog_light_color = Color(1, 0, 1, 1)
-fog_light_energy = 194.45
-fog_sun_scatter = 113.8
-fog_density = 1.0
-fog_height = 5.9
+[ext_resource type="PackedScene" uid="uid://bm67gmxx54ee4" path="res://Assets/Styles/world_environment.tscn" id="6_7pon8"]
 
 [node name="Loader" type="Node2D"]
 script = ExtResource("1_8eq0s")
@@ -52,6 +34,7 @@ offset_left = 100.0
 offset_top = 100.0
 offset_right = 1052.0
 offset_bottom = 548.0
+theme_override_colors/font_color = Color(0.666569, 0.666569, 0.666569, 1)
 theme_override_fonts/font = ExtResource("2_lavo4")
 theme_override_font_sizes/font_size = 32
 vertical_alignment = 1
@@ -82,7 +65,6 @@ stream = ExtResource("3_rnj5w")
 volume_db = -14.232
 pitch_scale = 1.08
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_2uydi")
-
 [node name="Level" type="Node" parent="."]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("6_7pon8")]

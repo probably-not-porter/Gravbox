@@ -88,7 +88,8 @@ func _load_level() -> void:
 			new_node.id = int(item.id)
 		
 		if item.type == "finish_block":
-			new_node.nextLevel = item.get("nextLevel") # Assumes nextLevel is in JSON
+			if item.get("nextLevel"):
+				new_node.nextLevel = item.get("nextLevel") # Assumes nextLevel is in JSON
 
 		new_node.position = Vector2(int(item.x) * grid_size, int(item.y) * grid_size)
 		level_container.add_child(new_node)

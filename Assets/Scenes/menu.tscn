@@ -1,29 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://crcgus66k7rvm"]
+[gd_scene load_steps=13 format=3 uid="uid://crcgus66k7rvm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/menu.gd" id="1_k3k8b"]
 [ext_resource type="Texture2D" uid="uid://bhv07ldjngcft" path="res://Assets/Sprites/logo.png" id="1_ll3np"]
-[ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/player2.png" id="2_38wwu"]
+[ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/icon.png" id="2_38wwu"]
+[ext_resource type="Shader" path="res://Assets/Shaders/clouds.gdshader" id="2_xq6qe"]
 [ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="3_keoxj"]
+[ext_resource type="Texture2D" uid="uid://bnbjffftcusuy" path="res://Assets/Shaders/gradient.tres" id="3_tslwo"]
+[ext_resource type="PackedScene" uid="uid://bm67gmxx54ee4" path="res://Assets/Styles/world_environment.tscn" id="4_1ayuj"]
+[ext_resource type="Texture2D" uid="uid://bsbmfrrhkoli" path="res://Assets/Sprites/button_icons.png" id="4_6t5rp"]
 
-[sub_resource type="Environment" id="Environment_1tn1d"]
-background_mode = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 3.6
-tonemap_exposure = 1.34
-glow_enabled = true
-glow_intensity = 1.57
-glow_bloom = 0.47
-glow_hdr_threshold = 0.98
-glow_hdr_scale = 0.0
-glow_hdr_luminance_cap = 37.79
-fog_light_energy = 11.3
-fog_sun_scatter = 11.95
-fog_density = 1.127
-fog_height = 5.9
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4mot"]
+shader = ExtResource("2_xq6qe")
+shader_parameter/cloud_speed = 0.99
+shader_parameter/cloud_scale = 4.0
+shader_parameter/cloud_density = 0.311
+shader_parameter/color_speed = 0.37
+shader_parameter/color_texture = ExtResource("3_tslwo")
 
-[sub_resource type="Curve" id="Curve_wmnvj"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506122, 1), 0.0, 0.0, 0, 0, Vector2(0.987755, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccye8"]
+atlas = ExtResource("4_6t5rp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3og81"]
+atlas = ExtResource("4_6t5rp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61enn"]
+atlas = ExtResource("4_6t5rp")
+region = Rect2(80, 0, 16, 16)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,6 +39,7 @@ grow_vertical = 2
 script = ExtResource("1_k3k8b")
 
 [node name="Logo" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_m4mot")
 position = Vector2(573.45, 111.585)
 scale = Vector2(4, 4)
 texture = ExtResource("1_ll3np")
@@ -46,9 +51,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.177
+offset_left = -153.177
 offset_top = -74.135
-offset_right = 96.823
+offset_right = 146.823
 offset_bottom = 133.735
 grow_horizontal = 2
 grow_vertical = 2
@@ -57,19 +62,24 @@ grow_vertical = 2
 layout_mode = 2
 theme = ExtResource("3_keoxj")
 text = "Play"
+icon = SubResource("AtlasTexture_ccye8")
+expand_icon = true
 
 [node name="LevelsButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("3_keoxj")
 text = "Custom Levels"
+icon = SubResource("AtlasTexture_3og81")
+expand_icon = true
 
 [node name="QuitButton" type="Button" parent="ButtonContainer"]
 layout_mode = 2
 theme = ExtResource("3_keoxj")
 text = "Quit"
+icon = SubResource("AtlasTexture_61enn")
+expand_icon = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_1tn1d")
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_1ayuj")]
 
 [node name="MenuParticles" type="CPUParticles2D" parent="."]
 position = Vector2(576, -1000)
@@ -82,23 +92,6 @@ emission_rect_extents = Vector2(600, 19.145)
 gravity = Vector2(0, 56.94)
 scale_amount_min = 0.0
 color = Color(1, 1, 1, 0.164706)
-
-[node name="AmbientParticles" type="CPUParticles2D" parent="."]
-amount = 300
-lifetime = 2.0
-preprocess = 5.0
-emission_shape = 3
-emission_rect_extents = Vector2(1000, 1000)
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 20.0
-angular_velocity_min = 300.0
-angular_velocity_max = 600.0
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_wmnvj")
-color = Color(1, 1, 1, 0.721569)
 
 [connection signal="pressed" from="ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ButtonContainer/LevelsButton" to="." method="_on_levels_button_pressed"]
