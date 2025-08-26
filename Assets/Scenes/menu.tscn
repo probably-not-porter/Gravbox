@@ -1,21 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://crcgus66k7rvm"]
+[gd_scene load_steps=10 format=3 uid="uid://crcgus66k7rvm"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/menu.gd" id="1_k3k8b"]
 [ext_resource type="Texture2D" uid="uid://bhv07ldjngcft" path="res://Assets/Sprites/logo.png" id="1_ll3np"]
 [ext_resource type="Texture2D" uid="uid://632ebmvmuakv" path="res://Assets/Sprites/icon.png" id="2_38wwu"]
-[ext_resource type="Shader" path="res://Assets/Shaders/clouds.gdshader" id="2_xq6qe"]
 [ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="3_keoxj"]
-[ext_resource type="Texture2D" uid="uid://bnbjffftcusuy" path="res://Assets/Shaders/gradient.tres" id="3_tslwo"]
 [ext_resource type="PackedScene" uid="uid://bm67gmxx54ee4" path="res://Assets/Styles/world_environment.tscn" id="4_1ayuj"]
 [ext_resource type="Texture2D" uid="uid://bsbmfrrhkoli" path="res://Assets/Sprites/button_icons.png" id="4_6t5rp"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4mot"]
-shader = ExtResource("2_xq6qe")
-shader_parameter/cloud_speed = 0.99
-shader_parameter/cloud_scale = 4.0
-shader_parameter/cloud_density = 0.311
-shader_parameter/color_speed = 0.37
-shader_parameter/color_texture = ExtResource("3_tslwo")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ccye8"]
 atlas = ExtResource("4_6t5rp")
@@ -39,7 +29,6 @@ grow_vertical = 2
 script = ExtResource("1_k3k8b")
 
 [node name="Logo" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_m4mot")
 position = Vector2(573.45, 111.585)
 scale = Vector2(4, 4)
 texture = ExtResource("1_ll3np")

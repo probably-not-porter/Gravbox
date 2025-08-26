@@ -1,0 +1,74 @@
+* {
+    font-family: monospace;
+    image-rendering: pixelated;
+}
+#grid {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 80vw;
+    max-width: calc(99vw - 250px);
+    height: 100vh;
+    background-color: #222;
+    overflow: scroll;
+}
+#controls {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 19vw;
+    min-width: 250px;
+    height: 100vh;
+    background-color: #222;
+    color: #aaa;
+    padding-left: 1vw;
+}
+.box {
+    border: 0.5px solid #444;
+    background-color: #333;
+    width: 100px;
+    height: 100px;
+    color: #333;
+    background-size: cover;
+}
+.box:hover {
+    border: 0.5px solid #777;
+}
+p1 {
+    width: auto;
+    height: auto;
+    background-color: white;
+}
+p1:hover {
+    background: red;
+    cursor: pointer;
+}
+button {
+    padding: 5px;
+    margin: 5px;
+}
+/* HIDE RADIO */
+[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + img {
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked + img {
+    outline: 2px solid #f00;
+}

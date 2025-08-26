@@ -6,7 +6,7 @@
 [resource]
 shader = ExtResource("1_w521b")
 shader_parameter/cloud_speed = 1.0
-shader_parameter/cloud_scale = 3.914
+shader_parameter/cloud_scale = 0.1
 shader_parameter/cloud_density = 0.0
-shader_parameter/color_speed = 0.34
+shader_parameter/color_speed = 0.028
 shader_parameter/color_texture = ExtResource("2_33mt8")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dflv6eq3nvv4o"]
+[gd_scene load_steps=15 format=3 uid="uid://dflv6eq3nvv4o"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/levels.gd" id="1_1mgcm"]
 [ext_resource type="Theme" uid="uid://uhcihmeaiuvb" path="res://Assets/Styles/default.tres" id="2_pu3sr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsbmfrrhkoli" path="res://Assets/Sprites/button_icons.png" id="3_bhp4y"]
 [ext_resource type="FontFile" uid="uid://dch5mduobgaey" path="res://Assets/Styles/Alkhemikal.ttf" id="3_er7xr"]
 [ext_resource type="PackedScene" uid="uid://bm67gmxx54ee4" path="res://Assets/Styles/world_environment.tscn" id="5_2de3g"]
+[ext_resource type="Material" uid="uid://dxvv3t11mqqc4" path="res://Assets/Shaders/clouds.tres" id="7_dujhp"]
 [ext_resource type="Script" path="res://Assets/Scripts/preview.gd" id="7_q1grg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_itaao"]
@@ -142,7 +143,9 @@ bbcode_enabled = true
 text = "[center]0/0[/center]"
 
 [node name="Preview" type="Node2D" parent="UI"]
-position = Vector2(576, 298.49)
+material = ExtResource("7_dujhp")
+use_parent_material = true
+position = Vector2(576, 300)
 scale = Vector2(12.7, 12.7)
 script = ExtResource("7_q1grg")
 
